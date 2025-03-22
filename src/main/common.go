@@ -23,6 +23,7 @@ func requestApprove(ctx context.Context, b *bot.Bot, message *models.Message) er
 }
 
 func checkTargetChat(next bot.HandlerFunc) bot.HandlerFunc {
+	log.Println("aboba")
 	return func(ctx context.Context, b *bot.Bot, update *models.Update) {
 		log.Printf("Check target chat: %v; target: %v", update.Message.Chat.ID, targetChatID)
 		if update.Message != nil && update.Message.Chat.ID == targetChatID {
