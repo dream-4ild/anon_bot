@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"github.com/go-telegram/bot"
+	"log"
 	"os"
 	"os/signal"
 )
@@ -10,6 +11,8 @@ import (
 func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
+
+	log.Printf("acsdlkklv")
 
 	opts := []bot.Option{
 		bot.WithMiddlewares(checkTargetChat),
