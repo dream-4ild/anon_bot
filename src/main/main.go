@@ -12,6 +12,7 @@ func main() {
 	defer cancel()
 
 	opts := []bot.Option{
+		bot.WithMiddlewares(checkTargetChat),
 		bot.WithDefaultHandler(defaultHandler),
 	}
 
