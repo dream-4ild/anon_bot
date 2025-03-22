@@ -23,7 +23,7 @@ func requestApprove(ctx context.Context, b *bot.Bot, message *models.Message) er
 
 func checkTargetChat(next bot.HandlerFunc) bot.HandlerFunc {
 	return func(ctx context.Context, b *bot.Bot, update *models.Update) {
-		if update.Message != nil && update.Message.Chat.ID == moderChatID {
+		if update.Message != nil && update.Message.Chat.ID == targetChatID {
 			return
 		}
 		next(ctx, b, update)
