@@ -7,6 +7,14 @@ import (
 	"log"
 )
 
+func sendApproveRequested(ctx context.Context, b *bot.Bot, update *models.Update) error {
+	_, err := b.SendMessage(ctx, &bot.SendMessageParams{
+		ChatID: update.Message.Chat.ID,
+		Text:   "Upload successfully, waiting for approval!",
+	})
+	return err
+}
+
 func handleText(ctx context.Context, b *bot.Bot, update *models.Update) error {
 
 	if update.Message.Text == "" {
@@ -27,7 +35,7 @@ func handleText(ctx context.Context, b *bot.Bot, update *models.Update) error {
 		log.Println(err)
 		return err
 	}
-	return nil
+	return sendApproveRequested(ctx, b, update)
 }
 
 func handlerPhotos(ctx context.Context, b *bot.Bot, update *models.Update) error {
@@ -47,6 +55,10 @@ func handlerPhotos(ctx context.Context, b *bot.Bot, update *models.Update) error
 			return err
 		}
 		if err := requestApprove(ctx, b, message); err != nil {
+			log.Println(err)
+			return err
+		}
+		if err := sendApproveRequested(ctx, b, update); err != nil {
 			log.Println(err)
 			return err
 		}
@@ -71,6 +83,10 @@ func handleDocument(ctx context.Context, b *bot.Bot, update *models.Update) erro
 			return err
 		}
 		if err := requestApprove(ctx, b, message); err != nil {
+			log.Println(err)
+			return err
+		}
+		if err := sendApproveRequested(ctx, b, update); err != nil {
 			log.Println(err)
 			return err
 		}
