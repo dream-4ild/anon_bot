@@ -1,16 +1,12 @@
 FROM golang:latest
 LABEL authors="dmitry"
 
-WORKDIR /app
+RUN git clone https://github.com/dream-4ild/anon_bot.git
 
-COPY ./src/main/go.mod ./src/main/go.sum ./src/main/
+WORKDIR /anon_bot/src/main/
 
-RUN cd src/main/ && go mod download
-
-COPY . .
-
-WORKDIR /app/src/main
+RUN go mod download
 
 RUN go build -o bot .
 
-CMD ["/app/src/main/bot"]
+CMD ["/anon_bot/src/main/bot"]
