@@ -1,0 +1,9 @@
+services:
+  anonim_bot:
+    build: .
+    container_name: tg_anon_bot
+    restart: unless-stopped
+    env_file:
+      - ".env"
+    ports:
+      - "8080:8080"
