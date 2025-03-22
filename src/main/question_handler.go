@@ -15,7 +15,7 @@ func handleText(ctx context.Context, b *bot.Bot, update *models.Update) error {
 
 	message, err := b.SendMessage(ctx, &bot.SendMessageParams{
 		ChatID: moderChatID,
-		Text:   update.Message.Text[2:],
+		Text:   update.Message.Text[3:],
 	})
 
 	if err != nil {

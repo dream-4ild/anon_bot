@@ -23,6 +23,7 @@ func main() {
 	b.RegisterHandler(bot.HandlerTypeMessageText, "/q ", bot.MatchTypePrefix, questionHandler)
 	b.RegisterHandler(bot.HandlerTypePhotoCaption, "/q", bot.MatchTypePrefix, questionHandler)
 	b.RegisterHandler(bot.HandlerTypeMessageText, "/approve", bot.MatchTypePrefix, approveHandler)
+	b.RegisterHandler(bot.HandlerTypeMessageText, "/f", bot.MatchTypePrefix, feedbackHandler)
 
 	b.Start(ctx)
 }

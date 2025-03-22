@@ -9,7 +9,8 @@ import (
 
 const (
 	defaultMessage = "Supported commands are:\n" +
-		"..."
+		"  /q your question here\n" +
+		"  /f your feedback here"
 )
 
 func defaultHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
